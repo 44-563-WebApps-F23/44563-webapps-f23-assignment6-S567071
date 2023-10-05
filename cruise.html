@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cruise Page</title>
+</head>
+<body>
+
+<h2>Pranathi Reddy goes on a cruise</h2>
+
+<form>
+    <label for="cabin">Shares Cabin</label>
+    <input type ="checkbox" id="shared" value="True" checked> <br>
+
+    <label for="breakfast">Breakfast</label>
+    <input type ="checkbox" id="breakfast" value="True" checked> <br>
+
+    <label for="poolpass">Pool Pass</label>
+    <input type ="checkbox" id="pool" value="False"> <br>
+
+    <input type="button" onclick="selectCruise()" value="Select a cruise"> <br>
+</form>
+
+<p id="output">Results</p>
+
+<script>
+    let my_cruise = {};
+    function selectCruise() {
+        my_cruise = {};
+        my_cruise.shared = document.getElementById('shared').checked;
+        my_cruise.breakfast = document.getElementById('breakfast').checked;
+        my_cruise.pool = document.getElementById('pool').checked;
+
+        document.getElementById('output').innerHTML = JSON.stringify(my_cruise);
+
+    }
+    
+    function updateCruise() {
+        var days = document.getElementById('property').value;
+        var price = document.getElementById('price').value;
+
+        my_cruise['property'] = days;
+        my_cruise['price'] = price;
+
+        document.getElementById('output').innerHTML = JSON.stringify(my_cruise);
+    }
+</script>
+
+<form>
+    <label for="name_of_the_property">Enter the number of days</label>
+    <input type ="text" id="property" name="property" value="days"> <br>
+
+    <label for="price_of_the_cruise">Enter price</label>
+    <input type ="text" id="price" name="price"> <br>
+
+    <input type="button" onclick="updateCruise()" value="Update the cruise">
+</form>
+
+
+</body>
+</html> 
