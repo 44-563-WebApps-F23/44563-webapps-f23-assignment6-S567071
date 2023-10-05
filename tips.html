@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tips Page</title>
+</head>
+<body>
+
+<h2>Pranathi Reddy shows tip amounts</h2>
+
+<label for = "baseElement">Enter base amount</label>
+<input type="number" id="baseElement" value="50">
+<br>
+<label for = "secondValue">Enter the tip percent</label>
+<input type="number" id="secondValue" value="15">
+<br>
+<input type="button" value="Show tip" onclick="tips()">
+<br>
+<div id="results"> </div>
+<script>
+    function tips() {
+        var baseAmount = parseInt(document.getElementById('baseElement').value);
+        var tipPercent = parseInt(document.getElementById('secondValue').value);
+        let myOutput = "";
+                
+        for( var i=0;i<5;i++){
+           var tip = tipPercent + i * 4;
+           var calculatedTip = (baseAmount * tip)/100;
+           const toShow = tip + "% is " + calculatedTip+"; ";
+           myOutput += toShow;
+        }
+        document.getElementById('results').innerHTML = 'Tips are: '+myOutput;
+    }
+</script>
+<br>
+<form>
+    <input type="radio" id="rg1_red" name="color" value="sum" onclick="chooseOp()">
+    <label for="sum">sum</label></br>
+  
+    <input type="radio" id="rg1_blue" name="color" value="difference" onclick="chooseOp()">
+    <label for="diff">difference</label></br>
+  
+    <input type="radio" id="rg1_green" name="color" value="product" onclick="chooseOp()">
+    <label for="mult">product</label></br>
+    
+    <div id="operation"> results</div>
+</form>
+<script>
+    function chooseOp() {
+        var amount = parseInt(document.getElementById('baseElement').value);
+        var percent = parseInt(document.getElementById('secondValue').value);
+        var output = 0;
+        if(document.getElementById('rg1_red').checked)
+        {
+            output = amount + percent;
+        }
+        if(document.getElementById('rg1_blue').checked)
+        {
+            output = amount - percent;
+        }
+        if(document.getElementById('rg1_green').checked)
+        {
+            output = amount * percent;
+        }
+        document.getElementById('operation').innerHTML = output;
+    }
+</script>
+<br>
+
+</body>
+</html> 
